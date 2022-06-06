@@ -1,6 +1,4 @@
 from tqdm import tqdm
-import time
-from rcviz import viz
 
 
 def recurs_function(n, m):
@@ -93,16 +91,19 @@ def find_period_mod(n, m):
         mod_m = list_period[(n % period)]
     print(f'F({n}) mod({m}) = {mod_m}, P({m}) = {period}')
 
-#find_period_mod= viz(find_period_mod)
+
+# find_period_mod= viz(find_period_mod)
 # @viz
 # def fib1(n):
 #     assert n >= 0
 #     return n if n <= 1 else fib1(n - 1) + fib1(n - 2)
 
 
-#fib1=viz(fib1)
+# fib1=viz(fib1)
 
-cache ={}
+cache = {}
+
+
 def fib2(n):
     assert n >= 0
     if n not in cache:
@@ -119,9 +120,10 @@ fib2(80)
 
 fib2(800)
 
-#fib2 = viz(fib2)
+# fib2 = viz(fib2)
 
 fib2(5)
+
 
 def main(n, m):
     pass
@@ -131,7 +133,7 @@ def main(n, m):
     # start_time = time.time()
     # find_period(n, m)
     # print(time.time() - start_time)
-    #fib1(3)
+    # fib1(3)
     # start_time = time.time()
     # mod_func(n, m)
     # print(time.time() - start_time)
@@ -139,7 +141,7 @@ def main(n, m):
 
 if __name__ == '__main__':
     # start_time = time.time()
-    #main(1000000000000000000, 100000)
+    # main(1000000000000000000, 100000)
     # print(time.time() - start_time)
-    #fib1(3)
+    # fib1(3)
     fib2(5)

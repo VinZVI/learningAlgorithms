@@ -1,38 +1,40 @@
-from tqdm import tqdm
-from time import sleep
 # for i in tqdm(range(200)):
 # # Waiting for 0.01 sec before next execution
 #    sleep(.01)
 # from functools import lru_cache
-from timing import compare, timed
+from timing import compare
+
+
 def memo(f):
     cache = {}
+
     def inner(n):
         if n not in cache:
             cache[n] = f(n)
         return cache[n]
+
     return inner
 
-#@memo # ИЛИ также можно заменить эту строчку на @lru_cache(maxsize=None)
+
+# @memo # ИЛИ также можно заменить эту строчку на @lru_cache(maxsize=None)
 def fib1(n):
     assert n >= 0
     return n if n <= 1 else fib1(n - 1) + fib1(n - 2)
 
 
-#tqdm(fib1(80))
-#print(fib1(499))
+# tqdm(fib1(80))
+# print(fib1(499))
 
 
 def fib3(n):
-   assert n >= 0
-   f0, f1 = 0, 1
-   for i in range(n - 1):
-      f0, f1 = f1, f0 + f1
-   return f1
+    assert n >= 0
+    f0, f1 = 0, 1
+    for i in range(n - 1):
+        f0, f1 = f1, f0 + f1
+    return f1
 
-#print(fib3(80000))
 
-import time
+# print(fib3(80000))
 
 # def timed(f, *args, n_iter=100):
 #     acc = float("inf")
@@ -42,8 +44,6 @@ import time
 #         t1 = time.perf_counter()
 #         acc = min(acc, t1 - t0)
 #     return acc
-
-from matplotlib import pyplot as plt
 
 # def compare(fs, args):
 #     for f in fs:

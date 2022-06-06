@@ -1,8 +1,10 @@
 import time
+
+
 def find_point(number):
     list_natural_terms = []
     term = 1
-    while number > term*2:
+    while number > term * 2:
         number -= term
         list_natural_terms.append(term)
         # if number in list_natural_terms:
@@ -12,7 +14,6 @@ def find_point(number):
     print(len(list_natural_terms))
     print(*list_natural_terms, end=' ')
     print('\n')
-
 
 
 def main():

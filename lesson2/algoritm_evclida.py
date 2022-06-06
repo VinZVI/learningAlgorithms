@@ -27,6 +27,7 @@ def nod_sab(a, b):
     if b > a:
         return nod_sab(a, b - a)
 
+
 def test(gcd, n_iter=100):
     for i in range(n_iter):
         c = random.randint(0, 1024)
@@ -39,7 +40,7 @@ def test(gcd, n_iter=100):
         assert a % d == b % d == 0
 
 
-def main(a,b):
+def main(a, b):
     test(nod_sab)
     test(nod_div)
     start_time = time.time()

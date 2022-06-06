@@ -1,0 +1,40 @@
+Insert 997
+Insert 961
+Insert 929
+Insert 925
+Insert 616
+Insert 481
+Insert 469
+Insert 448
+Insert 405
+Insert 402
+Insert 366
+Insert 328
+Insert 301
+Insert 287
+Insert 253
+Insert 237
+Insert 214
+Insert 166
+Insert 31
+Insert 9
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
+ExtractMax
