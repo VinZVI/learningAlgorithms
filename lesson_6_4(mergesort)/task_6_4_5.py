@@ -1,45 +1,46 @@
 import time
 
-# def iterative_merge_sort(a):
-#     a.reverse()
-#     q, s = [], []
-#     for count in a:
-#         q.append([count])
-#     print(q)
-#     while len(q) > 1:
-#         s.append(merg(q.pop(), q.pop()))
-#         if len(q) == 1:
-#             s.append(q.pop())
-#             q.extend(s)
-#             q.reverse()
-#             s.clear()
-#         elif len(q) < 1:
-#             q.extend(s)
-#             q.reverse()
-#             s.clear()
-#         print(s, q)
+
+def iterative_merge_sort(a):
+    a.reverse()
+    q, s = [], []
+    for count in a:
+        q.append([count])
+    print(q)
+    while len(q) > 1:
+        s.append(merg(q.pop(), q.pop()))
+        if len(q) == 1:
+            s.append(q.pop())
+            q.extend(s)
+            q.reverse()
+            s.clear()
+        elif len(q) < 1:
+            q.extend(s)
+            q.reverse()
+            s.clear()
+        print(s, q)
 
 
 c = 0
 
 
-def iterative_merge_sort(a):
-    q = []
-    for count in a:
-        q.append([count])
-    i = 0
-    n, m = len(q), len(q)
-    while n > 1:
-        q.append(merg(q[i], q[i + 1]))
-        i += 2
-        if m - i == 1:
-            q.append(q[i])
-            i += 1
-            n = n // 2 + 1
-            m += n
-        elif m - i == 0:
-            n //= 2
-            m += n
+# def iterative_merge_sort(a):
+#     q = []
+#     for count in a:
+#         q.append([count])
+#     i = 0
+#     n, m = len(q), len(q)
+#     while n > 1:
+#         q.append(merg(q[i], q[i + 1]))
+#         i += 2
+#         if m - i == 1:
+#             q.append(q[i])
+#             i += 1
+#             n = n // 2 + 1
+#             m += n
+#         elif m - i == 0:
+#             n //= 2
+#             m += n
 
 
 def merg(list_i, list_j):
