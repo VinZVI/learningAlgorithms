@@ -47,16 +47,16 @@ def LongestIncreasingSubsequenceLength(A, size):
         else:
             j = CeilIndex(tailTable, -1, len - 1, A[i])
 
-            if tailTable[j][0] == A[i]:
-                while tailTable[j][0] == A[i]:
-                    j += 1
-                d[i] = d[tailTable[j][1]] + 1
-                prev[i] = tailTable[j][1]
-                tailTable[j] = [A[i], i]
-            else:
-                prev[i] = tailTable[j - 1][1]
-                d[i] = d[tailTable[j][1]]
-                tailTable[j] = [A[i], i]
+            # if tailTable[j][0] == A[i]:
+            while tailTable[j][0] == A[i]:
+                j += 1
+            d[i] = d[tailTable[j][1]]
+            prev[i] = tailTable[j - 1][1]
+            tailTable[j] = [A[i], i]
+            # else:
+            #     prev[i] = tailTable[j - 1][1]
+            #     d[i] = d[tailTable[j][1]]
+            #     tailTable[j] = [A[i], i]
         # print(tailTable)
     print(A)
     print(d)
@@ -83,7 +83,7 @@ def input_file():
 
 
 def main():
-    n, array_numbers = input_file()
+    n, array_numbers = input_data()
     # ans, x = lis_funtion(n, array_numbers)
     ans, x = LongestIncreasingSubsequenceLength(array_numbers, n)
     print(ans)
