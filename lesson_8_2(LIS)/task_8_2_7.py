@@ -1,11 +1,10 @@
 import cProfile
+import sys
 
 
 def lis_funtion(n, array_numbers):
-    d, prev = [], []
+    d, prev = [1 for _ in range(n)], [-1 for _ in range(n)]
     for i in range(0, n):
-        d.append(1)
-        prev.append(-1)
         for j in range(0, i):
             if array_numbers[j] >= array_numbers[i] and d[j] + 1 > d[i]:
                 d[i] = d[j] + 1
@@ -13,8 +12,8 @@ def lis_funtion(n, array_numbers):
     ans = 0
     for i in range(0, n):
         ans = max(ans, d[i])
-
-    return f"{ans}\n{array_numbers}\n{d}\n{prev}\n{restor_result(ans, d, prev)}"
+    l = restor_result(ans, d, prev)
+    return ans, l
 
 
 def restor_result(ans, d, prev):
@@ -41,18 +40,28 @@ def input_file():
 
 
 def input_data():
-    array_numbers = []
-    n = map(int, input())
-    array_numbers.append(list(map(int, input().split())))
+    lines = [line for line in sys.stdin.read().split('\n') if line != '']
+    n = int(lines[0])
+    print(lines[1])
+    array_numbers = [int(x) for x in lines[1].split(' ')]
+    # n = next(reader)
+    # array_numbers = next(reader)
+    # n = int(sys.stdin.readline().strip())
+    # print(sys.stdin.readline().split(' '))
+    # array_numbers = map(int, sys.stdin.readline().split(' '))
+    # array_numbers.append(int(x.strip()))
     return n, array_numbers
 
 
 def main():
     n, array_numbers = input_file()
-    print(lis_funtion(n, array_numbers))
+    # print(input_data())
+    ans, x = lis_funtion(n, array_numbers)
+    print(ans)
+    print(*x, sep=' ')
 
 
 if __name__ == "__main__":
     # start_time = time.time()
-    cProfile.run(main())
+    cProfile.run("main()")
     # print(time.time() - start_time)
