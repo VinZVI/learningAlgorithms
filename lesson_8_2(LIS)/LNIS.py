@@ -15,7 +15,6 @@ def restor_result(ans, prev, k):
 
 def CeilIndex(A, l, r, key):
     while (r - l > 1):
-
         m = l + (r - l) // 2
         if (A[m] <= key):
             r = m
@@ -24,7 +23,43 @@ def CeilIndex(A, l, r, key):
     return r
 
 
+from bisect import bisect_right
+
+
+def LongestIncreasingSubsequenceLength2(v):
+    if len(v) == 0:  # boundary case
+        return 0
+
+    tail = [0 for i in range(len(v) + 1)]
+    length = 1  # always points empty slot in tail
+
+    tail[0] = v[0]
+
+    for i in range(1, len(v)):
+        if v[i] > tail[length - 1]:
+            # v[i] extends the largest subsequence
+            tail[length] = v[i]
+            length += 1
+
+        else:
+            # v[i] will extend a subsequence and discard older subsequence
+
+            # find the largest value just smaller than v[i] in tail
+
+            # to find that value do binary search for the v[i] in
+            # the range from begin to 0 + length
+
+            # bisect function either returns index where element is found
+            # or the appropriate index at which element should be placed
+
+            # finally replace the existing subsequence with new end value
+            tail[bisect_right(tail, v[i], 0, length - 1)] = v[i]
+
+    return length
+
+
 def LongestIncreasingSubsequenceLength(A, size):
+    A = [i * -1 for i in A]
     prev = [0] * size
     tailTable = [0] * (size + 1)
     tailTable[0] = A[0]
@@ -32,20 +67,21 @@ def LongestIncreasingSubsequenceLength(A, size):
     len = 1
     for i in range(1, size):
 
-        if (A[i] > tailTable[0]):
-            tailTable[0] = A[i]
-            prev[i] = 0
+        # if (A[i] > tailTable[0]):
+        #     tailTable[0] = A[i]
+        #     prev[i] = 0
 
-        elif (A[i] <= tailTable[len - 1]):
+        if (A[i] >= tailTable[len - 1]):
             tailTable[len] = A[i]
             prev[i] = len
             len += 1
 
         else:
-            j = CeilIndex(tailTable, -1, len - 1, A[i])
+            # tail[bisect_right(tail, v[i], 0, length - 1)] = v[i]
+            j = bisect_right(tailTable, A[i], 0, len - 1)
 
-            while tailTable[j] == A[i]:
-                j += 1
+            # while tailTable[j] == A[i]:
+            #     j += 1
             prev[i] = j
             tailTable[j] = A[i]
 
@@ -58,24 +94,15 @@ def LongestIncreasingSubsequenceLength(A, size):
 
 def restor_result2(ans, prev, size):
     l = [0] * ans
-    # n = 0
     for i in range(size - 1, 0, -1):
         if prev[i] == ans - 1:
             l[ans - 1] = i + 1
             ans -= 1
-            # n += 1
         if ans < 0:
             break
 
     return l
 
-    # for el in prev:
-    #     if el[0] == ans:
-    #         l.append(el[1] + 1)
-    #         ans -= 1
-    #     if ans < 0:
-    #         break
-    # l.reverse()
 
 
 def input_data():
@@ -102,7 +129,7 @@ def main():
     n, array_numbers = input_data()
     ans, x = LongestIncreasingSubsequenceLength(array_numbers, n)
     print(ans)
-    # print(*x, sep=' ')
+    #print(*x, sep=' ')
 
 
 if __name__ == "__main__":
